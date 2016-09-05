@@ -1,0 +1,24 @@
+<html>
+<title>Bank Info</title>
+<b>Bank Contacts</b>
+ 
+<p>The List Of Bank Contacts!</p>
+<ul>
+{% for bank in banks %}
+<li><strong>{{ bank.bankname|safe }}</strong> just ate <strong>{{ lunch.food|safe }}</strong>
+{% else %}
+<li><em>Nobody has eaten lunch, you must all be starving!</em></li>
+{% endfor %}
+</ul>
+ 
+<b>What are YOU eating?</b>
+ 
+<form method="POST" action="/new">
+    {{ form.hidden_tag() }}
+    {{ form.submitter.label }} {{ form.submitter(size=40) }}
+    <br/>
+    {{ form.food.label }} {{ form.food(size=47) }}
+    <br/>
+    {{ form.submit }}
+</form>
+</html>
