@@ -5,20 +5,22 @@
 <p>The List Of Bank Contacts!</p>
 <ul>
 {% for bank in banks %}
-<li><strong>{{ bank.bankname|safe }}</strong> just ate <strong>{{ lunch.food|safe }}</strong>
+<li><strong>{{ bank.bankname|safe }}</strong> Contacts : Phone Number <strong>{{ bank.phone|safe }}</strong>other <strong>{{ bank.other|safe }}</strong>
 {% else %}
-<li><em>Nobody has eaten lunch, you must all be starving!</em></li>
+<li><em>Rigntnow There is Nothing!</em></li>
 {% endfor %}
 </ul>
  
-<b>What are YOU eating?</b>
+<b>Show Me</b>
  
 <form method="POST" action="/new">
     {{ form.hidden_tag() }}
-    {{ form.submitter.label }} {{ form.submitter(size=40) }}
+    {{ form.bankname.label }} {{ form.bankname(size=40) }}
     <br/>
-    {{ form.food.label }} {{ form.food(size=47) }}
+    {{ form.phone.label }} {{ form.phone(size=47) }}
     <br/>
+    {{ form.other.label }} {{ form.other(size=47) }}
+    <br />
     {{ form.submit }}
 </form>
 </html>

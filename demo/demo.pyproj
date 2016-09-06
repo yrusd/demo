@@ -12,8 +12,10 @@
     <OutputPath>.</OutputPath>
     <Name>demo</Name>
     <RootNamespace>demo</RootNamespace>
-    <InterpreterId>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</InterpreterId>
-    <InterpreterVersion>3.4</InterpreterVersion>
+    <InterpreterId>
+    </InterpreterId>
+    <InterpreterVersion>
+    </InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +38,7 @@
     <Compile Include="firstUI.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="flaskDemo\bank\bankContacts.py" />
     <Compile Include="flaskDemo\lunch\eatlunch.py">
       <SubType>Code</SubType>
     </Compile>
@@ -110,9 +113,6 @@
     <Compile Include="Yqzl_DonetAndJava.py">
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\3.4" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="flaskDemo\bank\bank.db">
