@@ -10,7 +10,7 @@ import os
 
 smtpserver='smtp.mxhichina.com'
 username='zhangxw@fingard.com.cn'
-password='Um9zc0BmaW5nYXJkMQ=='
+password=''
 
 from_addr='zhangxw@fingard.com.cn'
 to_addr = ["zhangxw@fingard.com.cn","494923605@qq.com"]

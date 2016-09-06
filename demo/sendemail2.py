@@ -7,7 +7,7 @@ from email.mime.text import MIMEText
 from email.message import Message
 
 class Mail:
-    def __init__(self,mailServer="smtp.mxhichina.com",user="zhangxw@fingard.com.cn",pwd="Ross@fingard1"):
+    def __init__(self,mailServer="smtp.mxhichina.com",user="zhangxw@fingard.com.cn",pwd=""):
         self.mailServer = mailServer
         self.user = user
         self.pwd = pwd
