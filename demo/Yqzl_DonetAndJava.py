@@ -78,7 +78,7 @@ def delXls(dom,filepath,dic):
             #colsstr]
             DoNet_values = [row1 + ','.join(inner) + ' ); \n--go\n' for inner  in DoNet_values]
 
-            filename = k + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+            filename =".net_"+ k + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
             fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
             for inner  in DoNet_values:
                 print(str(inner))
@@ -90,7 +90,7 @@ def delXls(dom,filepath,dic):
             #colsstr]
             Java_values = [Java_keys + ','.join(inner) + ' ); \n--go\n' for inner  in Java_values]
 
-            filename = nameConvert[k] + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+            filename ="java_"+ nameConvert[k] + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
             fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
             for inner  in Java_values:
                 print(str(inner))
