@@ -29,6 +29,8 @@ def delXls(dom,filepath,dic):
     data = xlrd.open_workbook(filepath)
     fileNames = []
     nameConvert = getTagAttr(dom,'NameConvert_item')
+    DoNet_Script=dict()
+    Java_Script=dict()
     for (k,x) in dic.items():
         table = data.sheet_by_name(k)
         col1 = table.col_values(1)
@@ -73,32 +75,63 @@ def delXls(dom,filepath,dic):
 
 
 
-            row1 = 'insert into ' + k + ' ( ' + ','.join(row1) + ' )\nvalues ( '
+            row1 = 'insert into ' + k + ' (' + ','.join(row1) + ')\nvalues ('
             #colstr = [[ '\'1_' + x + '\'_1' for x in inner] for innner in
             #colsstr]
-            DoNet_values = [row1 + ','.join(inner) + ' ); \n--go\n' for inner  in DoNet_values]
+            DoNet_values = [row1 + ','.join(inner) + '); \n--go\n' for inner  in DoNet_values]
 
-            filename =".net_"+ k + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
-            fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
-            for inner  in DoNet_values:
-                print(str(inner))
-                fp.writelines(str(inner))
-            fp.writelines('commit;')
+            #filename =".net_"+ k + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+            #fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
+            #for inner  in DoNet_values:
+            #    print(str(inner))
+            #    fp.writelines(str(inner))
+            #fp.writelines('commit;')
 
-            Java_keys = 'insert into ' + nameConvert[k] + ' ( ' + ','.join(Java_keys) + ' )\nvalues ( '
+            DoNet_Script.setdefault(k,''.join(DoNet_values)+'commit;\n' if len(DoNet_values)>0 else '')
+
+            Java_keys = 'insert into ' + nameConvert[k] + ' (' + ','.join(Java_keys) + ')\nvalues ('
             #colstr = [[ '\'1_' + x + '\'_1' for x in inner] for innner in
             #colsstr]
-            Java_values = [Java_keys + ','.join(inner) + ' ); \n--go\n' for inner  in Java_values]
+            Java_values = [Java_keys + ','.join(inner) + '); \n--go\n' for inner  in Java_values]
 
-            filename ="java_"+ nameConvert[k] + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
-            fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
-            for inner  in Java_values:
-                print(str(inner))
-                fp.writelines(str(inner))
-            fp.writelines('commit;')
-
-
-    return fileNames
+            Java_Script.setdefault(nameConvert[k],''.join(Java_values)+'commit;\n'  if len(Java_values)>0 else '')
+            #filename ="java_"+ nameConvert[k] + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+            #fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
+            #for inner  in Java_values:
+            #    print(str(inner))
+            #    fp.writelines(str(inner))
+            #fp.writelines('commit;')
+    
+    filename=".net_"+ time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+    fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
+    if 'Sy_BankAccessSystems' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_BankAccessSystems"])
+    if 'Sy_BankAccessCmds' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_BankAccessCmds"])
+    if 'Sy_BankParamDef' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_BankParamDef"])
+    if 'Sy_BankParams' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_BankParams"])
+    if 'Sy_QryCmdAccConfig' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_QryCmdAccConfig"])
+    if 'Sy_PayStateConfig' in DoNet_Script.keys():
+        fp.writelines(DoNet_Script["Sy_PayStateConfig"])
+    print(filename)
+    filename="java_"+ time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
+    fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
+    if 't_sy_directchannels' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directchannels"])
+    if 't_sy_directchannelcmds' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directchannelcmds"])
+    if 't_sy_directchannelcmdparamdef' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directchannelcmdparamdef"])
+    if 't_sy_directchannelcmdparamval' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directchannelcmdparamval"])
+    if 't_sy_directquerycmdconfigs' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directquerycmdconfigs"])
+    if 't_sy_directchanneltransresults' in Java_Script.keys():
+        fp.writelines(Java_Script["t_sy_directchanneltransresults"])
+    print(filename)
 
 def ConvertToJavaDic(dom,tagname,list,tablename):
     tagDic = getTagAttr(dom,tagname)
@@ -126,4 +159,4 @@ def ConvertToJavaDic(dom,tagname,list,tablename):
     return Java
     
 dom = xml.dom.minidom.parse(os.getcwd() + '\\' + __iniFileName__)
-filenames = delXls(dom,getTagData(dom,'filepath'),getTagAttr(dom,'item'))
+delXls(dom,getTagData(dom,'filepath'),getTagAttr(dom,'item'))
