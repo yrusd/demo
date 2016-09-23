@@ -72,6 +72,12 @@
     <Compile Include="pyqt2.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="PyTestDemo\Demo1\picToText.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PyTestDemo\Demo2\easy_2048.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Q0000.py">
       <SubType>Code</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     <Folder Include="flaskDemo\lunch\" />
     <Folder Include="flaskDemo\lunch\templates\" />
     <Folder Include="flaskDemo\bank\" />
+    <Folder Include="PyTestDemo\" />
+    <Folder Include="PyTestDemo\Demo1\" />
+    <Folder Include="PyTestDemo\Demo2\" />
     <Folder Include="sinaAutoSpider\" />
   </ItemGroup>
   <PropertyGroup>
