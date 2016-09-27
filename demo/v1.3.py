@@ -1,4 +1,7 @@
 ﻿#coding=utf-8
+
+#version
+
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 import urllib.request  
