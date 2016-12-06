@@ -96,6 +96,9 @@
     <Compile Include="sinaAutoSpider\main.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="stock.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="trayicon.py">
       <SubType>Code</SubType>
     </Compile>
@@ -117,6 +120,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Yqzl_DonetAndJava.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="yys.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

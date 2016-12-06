@@ -180,7 +180,7 @@ class WeixinInterface:
         ssrXSDic.setdefault(u'杖',u'海坊主:第12章、妖气封印、御魂3')
         ssrXSDic.setdefault(u'棺材',u'跳跳哥哥:第10/12章、御魂5/10、妖气封印')
         ssrXSDic.setdefault(u'樱花树',u'三尾狐:第6/18章、御魂1')
-        ssrXSDic.setdefault(u'水池',u'鲤鱼精:第7章、御魂2/3/9')
+        ssrXSDic.setdefault(u'水池',u'鲤鱼精:第7章、御魂2/3/9\r\n河童:第7章、御魂2')
         ssrXSDic.setdefault(u'水泡',u'鲤鱼精:第7章、御魂2/3/9')
         ssrXSDic.setdefault(u'水球',u'河童:第7章、御魂2')
         ssrXSDic.setdefault(u'汤碗',u'孟婆:第9章、御魂5/6')
@@ -198,6 +198,7 @@ class WeixinInterface:
         ssrXSDic.setdefault(u'石',u'凃壁:第4/14章、御魂1')
         ssrXSDic.setdefault(u'石墙',u'凃壁:第4/14章、御魂1')
         ssrXSDic.setdefault(u'石化',u'兵俑:第3/10章、御魂2')
+        ssrXSDic.setdefault(u'兵甲',u'兵俑:第3/10章、御魂2')
         ssrXSDic.setdefault(u'石菩萨',u'独眼小僧:第11章、御魂1/5')
         ssrXSDic.setdefault(u'石锤',u'山童:第8/16章、御魂1')
         ssrXSDic.setdefault(u'稻草人',u'丑时之女:第10章、御魂5/7')
@@ -224,6 +225,7 @@ class WeixinInterface:
         ssrXSDic.setdefault(u'钉耙',u'镰鼬:御魂5')
         ssrXSDic.setdefault(u'铃铛',u'食梦貘:第14章、御魂4/9')
         ssrXSDic.setdefault(u'锤子',u'镰鼬:御魂5')
+        ssrXSDic.setdefault(u'锤',u'镰鼬:御魂5')
         ssrXSDic.setdefault(u'雉刀',u'鸦天狗:第3/9/12/17/18章、御魂6')
         ssrXSDic.setdefault(u'雨',u'雨女:第4章、御魂6')
         ssrXSDic.setdefault(u'雨衣',u'童男:第12章、御魂4')
@@ -242,7 +244,7 @@ class WeixinInterface:
 
         newSsrDic.setdefault(u'三尾狐',[u'御魂一层一回合-1',u'第三章式神挑战',u'第六章蝴蝶精-1'])
         newSsrDic.setdefault(u'丑时之女',[u'御魂七层一回合-1',u'御魂五层一回合-1',u'第十章丑时之女-1',u'第十章式神挑战'])
-        ssrDic.setdefault(u'黑豹','第五章涂壁1-1')
+        newSsrDic.setdefault(u'黑豹',[u'第五章涂壁1-1'])
         newSsrDic.setdefault(u'两面佛',[u'御魂九层三回合-2'])
         newSsrDic.setdefault(u'九命猫',[u'第一章式神挑战',u'第一章首领-3',u'第十五章提灯小僧12-2',u'第十五章提灯小僧3-2',u'第十五章首领-3'])
         newSsrDic.setdefault(u'二口女',[u'妖气封印',u'御魂十层一回合-1'])
@@ -260,7 +262,7 @@ class WeixinInterface:
         newSsrDic.setdefault(u'天邪鬼黄',[u'御魂一层一回合-1',u'第三章天邪鬼黄1-1',u'第三章天邪鬼黄2-1',u'第三章式神挑战',u'第三章赤舌2-1',u'第五章帚神2-2',u'第五章管狐1-2',u'第八章天邪鬼绿-2',u'第十二章童男1-1'])
         newSsrDic.setdefault(u'妖狐',[u'御魂二层一回合-1',u'第七章首领-1'])
         newSsrDic.setdefault(u'妖琴师',[u'御魂七层二回合-1'])
-        newSsrDic.setdefault(u'孟婆',[u'御魂五层三回合-2',u'御魂六层一回合-1',u'第九章首领-1',u'第九章首领-1'])
+        newSsrDic.setdefault(u'孟婆',[u'御魂五层三回合-2',u'御魂六层一回合-1',u'第九章首领-1'])
         newSsrDic.setdefault(u'寄生魂',[u'第七章首领-1',u'第三章首领-3',u'第二章寄生魂1-1',u'第二章寄生魂2-1',u'第二章帚神-1',u'第二章盗墓小鬼1-2',u'第五章管狐1-1',u'第五章管狐2-1',u'第十一章式神挑战',u'第十一章武士之灵1-3',u'第十二章首领-1',u'第十六章赤舌13-3',u'第十六章赤舌2-3'])
         newSsrDic.setdefault(u'山兔',[u'御魂七层二回合-1',u'第九章山兔1-4',u'第九章山兔2-3',u'第九章式神挑战',u'第十七章首领-1',u'第十三章首领-1',u'第十六章饿鬼123-1'])
         newSsrDic.setdefault(u'山童',[u'御魂一层二回合-1',u'第八章唐纸伞妖2-1',u'第十六章式神挑战',u'第十六章饿鬼123-2'])
@@ -481,10 +483,35 @@ class WeixinInterface:
                 content = content + ":\r\n" + tmpNoCount + tmpReturn
         elif content in ssrXSDic.keys():
             autoReturn = False
-            content = ssrXSDic[content]
+            tmpXsReturn = ssrXSDic[content]
+            if tmpXsReturn.split(':')[0] in newSsrDic.keys() and '\r\n' not in tmpXsReturn:
+                content = tmpXsReturn.split(':')[0]
+                tmpList = newSsrDic[content]
+                tmpMaxCount = 0
+                tmpNoCount = ''
+                tmpReturn = ''
+                for tmp in tmpList:
+                    if '-' in tmp:
+                        tmpCurrent = int(tmp.split('-')[1])
+                        if tmpCurrent > tmpMaxCount:
+                            tmpReturn = tmp.replace('-',u'，可击杀')
+                            tmpMaxCount = tmpCurrent
+                        elif tmpCurrent == tmpMaxCount:
+                            tmpReturn = tmpReturn + ';' + tmp.replace('-',u'，可击杀')
+                    else:
+                        if tmpNoCount == '':
+                            tmpNoCount = tmp
+                        else:
+                            tmpNoCount = tmpNoCount + ';' + tmp
+                if tmpNoCount != '':
+                    tmpNoCount = tmpNoCount + '\r\n'
+                content = content + ":\r\n" + tmpNoCount + tmpReturn
+                        #content=len(tmpList)
+            else:
+                content = tmpXsReturn
         
         if autoReturn:
-            tmpXS = content.replace(u'探索','').replace(u'是什么','').replace(u'线索','').replace(u'，',',').replace(u'、',',').replace('/',',')
+            tmpXS = content.replace(u'探索','').replace(u'是什么','').replace(u'线索','').replace(u'，',',').replace(u'、',',').replace('/',',').replace(' ',',').replace(u' ',',')
             tmpXsList = tmpXS.split(',')
             XsReturn = ''
             for tmpXs in tmpXsList:
@@ -496,7 +523,7 @@ class WeixinInterface:
                         XsReturn = tmpXsReturn
                 if '\r\n' not in tmpXsReturn:
                     if tmpXsReturn.split(':')[0] in newSsrDic.keys():
-                        content=tmpXsReturn.split(':')[0]
+                        content = tmpXsReturn.split(':')[0]
                         tmpList = newSsrDic[content]
                         tmpMaxCount = 0
                         tmpNoCount = ''

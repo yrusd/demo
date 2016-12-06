@@ -62,7 +62,8 @@ class WorkThread(QThread):
     def run(self):
         global shenzhen,shanghai,stock,code,isRefresh
         while 1:         
-            html = self.getHtml('http://hq.sinajs.cn/list=' + code + 's_sh000001,s_sz399001')
+            #html = self.getHtml('http://hq.sinajs.cn/list=' + code + 's_sh000001,s_sz399001')
+            html = self.getHtml('http://1.nofat1.applinzi.com/stock?code=' + code + 's_sh000001,s_sz399001')
             eachCode = code[:-1].split(',')
             eachInfo = html.split(';')
             print(eachInfo)
