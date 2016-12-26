@@ -62,7 +62,8 @@ class WorkThread(QThread):
     def run(self):
         global shenzhen,shanghai,stock,code,isRefresh
         while 1:         
-            #html = self.getHtml('http://hq.sinajs.cn/list=' + code + 's_sh000001,s_sz399001')
+            #html = self.getHtml('http://hq.sinajs.cn/list=' + code +
+            #'s_sh000001,s_sz399001')
             html = self.getHtml('http://1.nofat1.applinzi.com/stock?code=' + code + 's_sh000001,s_sz399001')
             eachCode = code[:-1].split(',')
             eachInfo = html.split(';')
@@ -785,7 +786,7 @@ class messageBox(QDialog):
 
         self.setLayout(self.varLayout)
 
-        self.resize(250,20 * (i+1))
+        self.resize(250,20 * (i + 1))
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool | Qt.Popup)
         self.move((self.desktop.availableGeometry().width() - self.width()),self.desktop.availableGeometry().height()) #初始化位置到右下角
         self.setWindowOpacity(0.3)
@@ -854,10 +855,11 @@ if __name__ == "__main__":
     workThread = WorkThread()
 
     dialog.execButton.clicked.connect(work)
+    
     #timer.moveToThread(hotKey)
     timer.timeout.connect(countTime)
     #dialog.show()
-
+    dialog.execButton.click()
 
     #msg = wintypes.MSG()
     #while user32.GetMessageA(byref(msg), None, 0, 0) != 0:
