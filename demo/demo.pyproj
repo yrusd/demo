@@ -141,6 +141,7 @@
     <Folder Include="flaskDemo\lunch\" />
     <Folder Include="flaskDemo\lunch\templates\" />
     <Folder Include="flaskDemo\bank\" />
+    <Folder Include="DSPScript\" />
     <Folder Include="PyTestDemo\" />
     <Folder Include="PyTestDemo\Demo1\" />
     <Folder Include="PyTestDemo\Demo2\" />

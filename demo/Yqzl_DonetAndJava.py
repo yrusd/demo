@@ -21,11 +21,14 @@ def getTagAttr(dom,tagname):
         dic.setdefault(str(inner.getAttribute('key')),str(inner.getAttribute('value')))
     return dic
 
+def getTagSigAttr(dom,tagname,attrname):
+    return str(dom.getElementsByTagName(tagname)[0].getAttribute(attrname)) if dom.getElementsByTagName(tagname).length > 0 else '>'
+
 def setTagAttr(dom,tagname,value):
     for inner in dom.getElementsByTagName(tagname):
         inner.setAttribute('value',value)
 
-def delXls(dom,filepath,dic):
+def delXls(dom,filepath,dic,optition):
     data = xlrd.open_workbook(filepath)
     fileNames = []
     nameConvert = getTagAttr(dom,'NameConvert_item')
@@ -50,8 +53,15 @@ def delXls(dom,filepath,dic):
 
             lastDateTime = str(y) + "%02d" % m + "%02d" % d + "%02d" % h + "%02d" % M + "%02d" % s
 
-            if(int(lastDateTime) < int(x)):
-                continue
+            if optition=='>':
+                if(int(lastDateTime) < int(x)):
+                    continue
+            elif optition=='<':
+                if(int(lastDateTime) > int(x)):
+                    continue
+            elif optition=='=':
+                if(int(lastDateTime) == int(x)):
+                    continue
 
             inner[colLastModifiedOn] = datetime(y,m,d ,h,M,s)
             inner[colLastModifiedOn] = inner[colLastModifiedOn].strftime('to_date(\'%Y-%m-%d %H:%M:%S\' ,\'yyyy-mm-dd hh24:mi:ss\')')
@@ -159,4 +169,4 @@ def ConvertToJavaDic(dom,tagname,list,tablename):
     return Java
     
 dom = xml.dom.minidom.parse(os.getcwd() + '\\' + __iniFileName__)
-delXls(dom,getTagData(dom,'filepath'),getTagAttr(dom,'item'))
+delXls(dom,getTagData(dom,'filepath'),getTagAttr(dom,'item'),getTagSigAttr(dom,'dealitems','optition'))
