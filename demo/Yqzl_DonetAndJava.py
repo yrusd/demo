@@ -53,15 +53,8 @@ def delXls(dom,filepath,dic,optition):
 
             lastDateTime = str(y) + "%02d" % m + "%02d" % d + "%02d" % h + "%02d" % M + "%02d" % s
 
-            if optition=='>':
-                if(int(lastDateTime) < int(x)):
-                    continue
-            elif optition=='<':
-                if(int(lastDateTime) > int(x)):
-                    continue
-            elif optition=='=':
-                if(int(lastDateTime) == int(x)):
-                    continue
+            if(int(lastDateTime) < int(x)):
+                continue
 
             inner[colLastModifiedOn] = datetime(y,m,d ,h,M,s)
             inner[colLastModifiedOn] = inner[colLastModifiedOn].strftime('to_date(\'%Y-%m-%d %H:%M:%S\' ,\'yyyy-mm-dd hh24:mi:ss\')')
@@ -97,14 +90,14 @@ def delXls(dom,filepath,dic,optition):
             #    fp.writelines(str(inner))
             #fp.writelines('commit;')
 
-            DoNet_Script.setdefault(k,''.join(DoNet_values)+'commit;\n' if len(DoNet_values)>0 else '')
+            DoNet_Script.setdefault(k,''.join(DoNet_values)+'' if len(DoNet_values)>0 else '')
 
             Java_keys = 'insert into ' + nameConvert[k] + ' (' + ','.join(Java_keys) + ')\nvalues ('
             #colstr = [[ '\'1_' + x + '\'_1' for x in inner] for innner in
             #colsstr]
             Java_values = [Java_keys + ','.join(inner) + '); \n--go\n' for inner  in Java_values]
 
-            Java_Script.setdefault(nameConvert[k],''.join(Java_values)+'commit;\n'  if len(Java_values)>0 else '')
+            Java_Script.setdefault(nameConvert[k],''.join(Java_values)+''  if len(Java_values)>0 else '')
             #filename ="java_"+ nameConvert[k] + '_' + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
             #fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
             #for inner  in Java_values:
