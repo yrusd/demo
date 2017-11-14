@@ -145,7 +145,7 @@ def delXls(dom,filepath,dic,optition):
     print(filename)
     filename = "java_" + time.strftime('%Y%m%d%H%M%S',time.localtime(time.time())) + '.txt'
     fp = open(os.getcwd() + '\\' + filename,mode="a+",encoding="UTF-8") 
-    fp.writelines('spool log-middle.log  \n')
+    fp.writelines('spool direct.log  \n')
     if 't_sy_banks' in Java_Script.keys():
         fp.writelines(Java_Script["t_sy_banks"])
     if 't_sy_areas' in Java_Script.keys():
@@ -178,6 +178,7 @@ def ConvertToJavaDic(dom,tagname,list,tablename):
     unifiedIDDic = getTagAttr(dom,"UnifiedIDConvert_item")
     t_sy_directchannelareasDic = getTagAttr(dom,"t_sy_directchannelareas_item")
     directPayWayConvertDic = getTagAttr(dom,"DirectPayWayConvert_item")
+    paystateConvertDic = getTagAttr(dom,"PayStateConvert_item")
     Java = []    
     appendFlag = True
     for inner in list:
@@ -196,11 +197,21 @@ def ConvertToJavaDic(dom,tagname,list,tablename):
                     continue
                 else:
                     JavaDic.setdefault("DIRECTPAYWAY",v)
+                    continue
+            if(tablename == "Sy_PayStateConfig" and k == "PayState"):
+                if v in paystateConvertDic.keys():
+                    v = paystateConvertDic[v]                    
             if(tablename == "Sy_PayStateConfig" and k == "UnifiedPayCode"):
                 if v not in unifiedIDDic.values():
-                    appendFlag = False
-                    break
+                    v = '\'E8001\''
+                    #continue
+                    #appendFlag = False
+                    #break
             if(tablename == "Sy_PayCodeMappings" and k == "UnifiedID"):
+                if v not in unifiedIDDic.keys():
+                    v = '8001'
+                    #appendFlag = False
+                    #break
                 JavaDic.setdefault("TRANSCODEID",unifiedIDDic[v.replace('\'','')])
                 continue
             if(tablename == "Sy_PayStateConfig" and k == "DirectAccessCode"):
